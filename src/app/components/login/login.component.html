@@ -1,0 +1,31 @@
+<mat-card>
+  <mat-card-content>
+      <div class="intro">
+        <div>How to play:</div>
+        <ol>
+          <li>Make an account or log into a pre-existing account.</li>
+          <li>Click the 'plus' icon in the nav bar to go to create a game</li>
+          <li>
+            <div>
+              Next, select game options: 
+              <li>Total players (including you)</li>
+              <li>Please note solo players cannot win or lose a game, but can earn points for questions right and wrong</li>
+              <li>Category</li>
+              <li>Difficulty</li>
+              <li>Type of Question (true/false or multiple choice)</li>
+              <li>The other players joining you (if multi-player)</li>
+            </div> 
+          </li>
+        </ol>
+        <p>The game will alternate players on each question and at the end of the game the scores are tallied</p>
+        <p>You can then view your stats by clicking on the account details icon on the nav bar.</p>       
+      </div>
+  
+      <div class="logButton">
+        <button mat-raised-button *ngIf="buttonRendered" (click)="loggingIn()">
+          Login with Google
+        </button>
+      </div>
+  </mat-card-content>
+
+</mat-card>

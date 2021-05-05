@@ -1,0 +1,79 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.error {
+  padding-top: 25px;
+}
+
+.main-card {
+  margin: auto;
+  margin-top: 30px;
+}
+
+.player-stats-card {
+  margin: auto;
+}
+h1 {
+  vertical-align: top;
+}
+
+td,
+th {
+  border: 1px solid black;
+  text-align: center;
+}
+
+th {
+  padding: 20px;
+  margin-top: 20px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+:host ::ng-deep .spinner1 circle{   
+  stroke: #FB00FF;
+}
+
+:host ::ng-deep .spinner2 circle{   
+  stroke: #9900FF;
+}
+.highlights {
+  vertical-align: text-top;
+}
+.boldText {
+  font-weight: bolder;
+  font-size: 1.2em;
+}
+
+.title {
+  text-align: center;
+}
+
+.text-color {
+  color: white;
+}
+
+.win-loss {
+  background-color: #00FFD4;
+}
+
+.questions {
+  background-color: #00FF15;
+}
+
+.highlights-header {
+  background-color: #00A6FF;
+}
+
+img {
+  width: 65px;
+  height: 65px;
+}

@@ -1,0 +1,63 @@
+.card {
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+}
+
+h1,
+p {
+  text-align: center;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+button {
+  margin: 10px 0px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-full-width {
+  padding: 5px 20px;
+  margin-bottom: 20px;
+} 
+
+.text-color {
+  color: white !important;
+}
+
+.player {
+  background-color: #ff0000;
+}
+.category {
+  background-color: #ff7700;
+}
+
+.difficulty {
+  background-color: #ffea00;
+}
+
+.questions {
+  background-color: #00ff15;
+}
+
+.friends {
+  background-color: #00a6ff;
+}
+
+.numberOfQuestions {
+  background-color: #fb00ff;
+}
+
+.mat-raised-button {
+  background-color: #9900ff;
+  color: white;
+}

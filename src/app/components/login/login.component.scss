@@ -1,0 +1,45 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.form {
+  width: 20rem;
+}
+.form-control {
+  display: block;
+}
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-raised-button {
+  background-color: #00850b;
+  color: white;
+}
+.intro {
+  text-align: left;
+}
+.logButton {
+  display: flex;
+  justify-content: center;
+}
+.starting {
+  display: block;
+}
+mat-card {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  max-width: 70%;
+  min-width: 70%;
+  min-height: 50%;
+  margin: auto;
+  margin-top: 15px;
+}
+
+mat-card-content {
+  size: 12px;
+}

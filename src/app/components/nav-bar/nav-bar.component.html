@@ -1,0 +1,24 @@
+<div>
+  <mat-toolbar>
+    <span>Trivia Extraordinaire</span>
+    <span class="filler"></span>
+
+    <button
+      matTooltip="Create new game"
+      mat-icon-button
+      aria-label="Create new trivia game"
+      [routerLink]="['/create-game']"
+    >
+      <mat-icon>library_add</mat-icon>
+    </button>
+    <button
+      matTooltip="View account details"
+      mat-icon-button
+      aria-label="View account details"
+      [routerLink]="['/user-details']"
+    >
+      <mat-icon>account_box</mat-icon>
+    </button>
+    <button (click)="logOut()" mat-button>Logout</button>
+  </mat-toolbar>
+</div>

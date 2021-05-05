@@ -1,0 +1,105 @@
+<div *ngIf="!isGameOver()" class="main-container">
+  <mat-card
+    class="player-header"
+    *ngIf="isGameStarted"
+    [style.background-color]="colors[players.indexOf(activePlayer)]"
+  >
+    <mat-card-content>
+      <h2>Active Player:</h2>
+      <div class="flex-answer-container">
+        <img
+          mat-card-avatar
+          src="{{ activePlayer.photoURL }}"
+          alt="User Avatar"
+        />
+        <h3>{{ activePlayer.displayName }}</h3>
+      </div>
+      <h2>Category: {{ activeQuestion.category }}</h2>
+      <h2>Question: {{ turnNumber + 1 }}/{{ questions[0].length }}</h2>
+      <h2 [innerHTML]="displayCurrentPlayerScore()"></h2>
+      <p [innerHTML]="whoIsWinning()"></p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="questions-card">
+    <div class="flex-container">
+      <mat-card-title [innerHTML]="activeQuestion.question"></mat-card-title>
+      <mat-card-content class="flex-container">
+        <div *ngIf="activeQuestion.type === 'multiple'" class="flex-container">
+          <div
+            *ngFor="let answer of activeQuestion.answersArray"
+            class="flex-answer-container"
+          >
+            <div class="answer-text">
+              <mat-card
+                [style.background]="amISelected(answer) ? '#00FFD4' : 'white'"
+                (click)="setSelected(answer)"
+                [innerHTML]="answer.value"
+              ></mat-card>
+            </div>
+            <div>
+              <mat-icon
+                *ngIf="isAnswerSubmitted()"
+                [innerHtml]="answer.correct ? 'check_circle' : 'close'"
+                [ngClass]="answer.correct ? 'correct' : 'incorrect'"
+              ></mat-icon>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="activeQuestion.type === 'boolean'" class="flex-container">
+          <div
+            *ngFor="let answer of activeQuestion.answersArray"
+            class="flex-answer-container"
+          >
+            <div>
+              <mat-card
+                [style.background]="amISelected(answer) ? '#00FFD4' : 'white'"
+                (click)="setSelected(answer)"
+                [innerHTML]="answer.value"
+              ></mat-card>
+            </div>
+            <div>
+              <mat-icon
+                *ngIf="isAnswerSubmitted()"
+                [innerHtml]="answer.correct ? 'check_circle' : 'close'"
+                [ngClass]="answer.correct ? 'correct' : 'incorrect'"
+              ></mat-icon>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          *ngIf="canSubmit"
+          (click)="submitAnswer(selectedAnswer, player)"
+        >
+          Submit Answer
+        </button>
+        <button
+          mat-raised-button
+          *ngIf="isAnswerSubmitted()"
+          (click)="nextQuestion()"
+        >
+          Next
+        </button>
+      </mat-card-actions>
+    </div>
+  </mat-card>
+</div>
+
+<div *ngIf="isGameOver()" class="center">
+  <mat-card class="player-stats">
+    <mat-card-title>GAME RESULTS</mat-card-title>
+    <mat-card-content>
+      <h2>{{whoIsWinning()}}</h2>
+    <div *ngFor="let player of players; let i = index;">
+      <mat-card class="score" [style.background-color]="colors[i]">{{player.displayName}} : {{tempScore[i]}} PTS</mat-card>
+    </div>
+  </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="goToUserDetails()">End Game</button>
+    </mat-card-actions>
+  </mat-card>
+ 
+</div>

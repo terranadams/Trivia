@@ -1,0 +1,114 @@
+<mat-card >
+  <h1>Create New Game</h1>
+  <p>Please select your game options:</p>
+  <mat-card >
+    <form class="example-form flex-container">
+      <mat-form-field appearance="fill" class="example-full-width player">
+        <mat-label [ngClass]="'text-color'">Total Players</mat-label>
+        <mat-select
+          [(ngModel)]="selectedCount"
+          name="playerCount"
+          (selectionChange)="
+            getPlayerCount(selectedCount); isFormValid(); setPlayerCount()
+          "
+        >
+          <mat-option
+            *ngFor="let number of playerCount"
+            [value]="number"
+            class="player text-color"
+            >{{ number }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="example-full-width category">
+        <mat-label [ngClass]="'text-color'">Category</mat-label>
+        <mat-select
+          [(ngModel)]="selectedCategory"
+          name="playerCategory"
+          (selectionChange)="isFormValid()"
+        >
+          <mat-option
+            *ngFor="let category of categoryTitle"
+            [value]="category"
+            class="category text-color"
+            >{{ category }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="example-full-width difficulty">
+        <mat-label [ngClass]="'text-color'">Difficulty</mat-label>
+        <mat-select
+          [(ngModel)]="selectedDifficulty"
+          name="playerDifficulty"
+          (selectionChange)="isFormValid()"
+        >
+          <mat-option *ngFor="let level of difficulty" [value]="level" class="difficulty text-color">{{
+            level
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="example-full-width questions">
+        <mat-label [ngClass]="'text-color'">Questions Type</mat-label>
+        <mat-select
+          [(ngModel)]="selectedQuestionType"
+          name="questionType"
+          (selectionChange)="isFormValid()"
+        >
+          <mat-option *ngFor="let type of type" [value]="type" class="questions text-color">{{
+            type
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="!onePlayer" appearance="fill" class="example-full-width friends">
+        <mat-label [ngClass]="'text-color'">Additional Players</mat-label>
+        <mat-select
+          [(ngModel)]="selectedFriends"
+          name="selectedFriends"
+          multiple
+          (selectionChange)="isFormValid()"
+        >
+          <mat-option
+            *ngFor="let user of existingUsers"
+            [value]="user"
+            [disabled]="selectedFriends.length == (selectedCount - 1)"
+            class="friends text-color"
+            >{{ user }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="fill"
+        class="example-full-width numberOfQuestions"
+      >
+        <mat-label [ngClass]="'text-color'"
+          >Number of questions per user</mat-label
+        >
+        <input
+          matInput
+          type="text"
+          placeholder="0"
+          name="selectQuestionCount"
+          [(ngModel)]="selectQuestionCount"
+          (change)="checkQuestionCount(); isFormValid()"
+          class="numberOfQuestions"
+        />
+        <mat-hint [ngClass]="'text-color'">Max of 50 questions</mat-hint>
+      </mat-form-field>
+      <mat-error *ngIf="validQuestionTotal">{{ errorMessage }}</mat-error>
+
+      <button *ngIf="canSubmit"
+        mat-raised-button
+        type="submit"
+        [disabled]="formValid"
+        (click)="submitForm()"
+      >
+        Submit
+      </button>
+    </form>
+  </mat-card>
+</mat-card>

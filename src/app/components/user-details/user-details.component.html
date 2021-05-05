@@ -1,0 +1,50 @@
+<mat-card class="main-card">
+  <mat-card-header>
+    <img mat-card-avatar src="{{ photoURL }}" alt="User Photo" />
+    <h1>{{ displayName }} Details</h1>
+  </mat-card-header>
+  <mat-error *ngIf="noPlayerData">You haven't played any games yet! Please click the plus icon to create a new game</mat-error>
+  <mat-card *ngIf="!noPlayerData" class="player-stats-card">
+    <table>
+      <tr>
+        <th class="win-loss text-color">Win loss ratio</th>
+        <th class="questions text-color">Questions ratio</th>
+        <th class="highlights-header text-color">Highlights</th>
+      </tr>
+      <tr *ngIf="!noPlayerData">
+        <td>
+          Games Played: {{ totalGames }} <br />
+          Win rate: {{ winLossPercent }}%
+          <mat-progress-spinner
+            value="{{ winLossPercent }}"
+            mode="determinate"
+            class="spinner1"
+            style="margin: 0 auto"
+          >
+          </mat-progress-spinner>
+        </td>
+        <td>
+          Questions Answered: {{ questionsAnswered }}
+          <br />
+          Percent of questions correct: {{ correctIncorrectPercent | number : '1.2-2' }}%
+          <mat-progress-spinner
+            style="margin: 0 auto"
+            value="{{ correctIncorrectPercent }}"
+            mode="determinate"
+            class="spinner2"
+          >
+          </mat-progress-spinner>
+        </td>
+        <td class="highlights">
+          <span class="boldText">Best category:</span>
+          <br />
+          {{ bestCategory }} <br />
+          <br />
+          <span class="boldText">Worst category:</span>
+          <br />
+          {{ worstCategory }}
+        </td>
+      </tr>
+    </table>
+  </mat-card>
+</mat-card>
